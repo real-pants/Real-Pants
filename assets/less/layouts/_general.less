@@ -1,0 +1,27 @@
+// Content wrapper
+.wrap { }
+
+// Main content area
+.mainbar {
+  .make-sm-column(@main-sm-columns);
+  .sidebar-primary & {
+    .make-sm-column(@main-sm-columns - @sidebar-sm-columns);
+  }
+}
+
+
+/* =Content
+----------------------------------------------- */
+
+* {-ms-word-wrap: break-word;
+word-wrap: break-word;}
+
+#primary {padding: 70px 32px;}
+#primary > article {
+  padding: 20px 40px;
+}
+
+/* =Ads
+----------------------------------------------- */
+
+#oio-banner-1 {margin-bottom: @line-height-computed;}
