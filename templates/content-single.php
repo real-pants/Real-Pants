@@ -19,7 +19,7 @@
       <?php the_content(); ?>
     </div>
     <footer>
-      <?php // if ( is_single() && get_the_author_meta( 'description' ) ) : get_template_part( 'templates/author-bio' ); endif; ?>
+      <?php  if ( is_singular( 'sponsoredpost' )  && get_the_author_meta( 'description' ) ) : get_template_part( 'templates/sponsor-bio' ); endif; ?>
       <?php wp_link_pages(array('before' => '<nav class="page-nav"><p>' . __('Pages:', 'roots'), 'after' => '</p></nav>')); ?>
     </footer>
     <?php comments_template('/templates/comments.php'); ?>
