@@ -1,10 +1,7 @@
 <?php
 /**
- * The template for displaying Author bios
- *
- * @package WordPress
- * @subpackage Twenty_Fifteen
- * @since Twenty Fifteen 1.0
+ * template for displaying an "author bio" on sponsored posts
+ * edit the post's author's bio to display a message about sponsored posts.
  */
 ?>
 
