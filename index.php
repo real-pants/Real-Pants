@@ -7,7 +7,15 @@
   <?php get_search_form(); ?>
 <?php endif; ?>
 
-<?php while (have_posts()) : the_post(); ?>
+<?php query_posts('showposts=1'); while (have_posts()) : the_post(); ?>
+
+  <?php get_template_part('templates/content', get_post_format()); ?>
+<?php endwhile; ?>
+
+<div class="well">widget goes here </div>
+
+<?php query_posts('offset=1'); while (have_posts()) : the_post(); ?>
+
   <?php get_template_part('templates/content', get_post_format()); ?>
 <?php endwhile; ?>
 
