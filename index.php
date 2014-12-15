@@ -12,7 +12,15 @@
   <?php get_template_part('templates/content', get_post_format()); ?>
 <?php endwhile; ?>
 
-<div class="well">widget goes here </div>
+<article class="well">
+
+<?php if ( is_active_sidebar( 'sidebar-innerloop' ) ) : ?>
+  <section id="sidebar-innerloop" class="sidebar-innerloop widget-area" role="complementary">
+    <?php dynamic_sidebar( 'sidebar-innerloop' ); ?>
+  </section><!-- #primary-sidebar -->
+  <?php endif; ?>
+
+ </article>
 
 <?php query_posts('offset=1'); while (have_posts()) : the_post(); ?>
 
