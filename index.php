@@ -9,13 +9,13 @@
 
 <?php /* do special stufff on the first page of reesults */ if ( !is_paged() ) : ?>
 
-<!--- LOOP ONE: Show the most recent post ---->
+<!-- LOOP ONE: Show the most recent post -->
 <?php query_posts('showposts=1'); while (have_posts()) : the_post(); ?>
 
   <?php get_template_part('templates/content', get_post_format()); ?>
 <?php endwhile; ?>
 
-<!--- WIDGET AREA ---->
+<!-- WIDGET AREA -->
 <article class="well">
 <?php if ( is_active_sidebar( 'sidebar-innerloop' ) ) : ?>
   <section id="sidebar-innerloop" class="sidebar-innerloop widget-area" role="complementary">
@@ -24,7 +24,7 @@
   <?php endif; ?>
  </article>
 
-<!--- LOOP TWO: Show the remaining posts ---->
+<!-- LOOP TWO: Show the remaining posts -->
 <?php query_posts('offset=1'); while (have_posts()) : the_post(); ?>
   <?php get_template_part('templates/content', get_post_format()); ?>
 <?php endwhile; ?>

@@ -51,3 +51,21 @@ function custom_conference_in_home_loop( $query ) {
  return $query;
  }
  add_filter( 'pre_get_posts', 'custom_conference_in_home_loop' );
+
+
+
+/**----------------------------------------------------------------------------
+ * Support for Post Thumbnails
+ * @link https://github.com/pfefferle/SemPress/
+ ----------------------------------------------------------------------------*/
+function sempress_the_post_thumbnail($before = "", $after = "") {
+  if ( '' != get_the_post_thumbnail() ) {
+    $image = wp_get_attachment_image_src(get_post_thumbnail_id(), 'post-thumbnail');
+    $class = "";
+    if ($image['1'] < "300")
+      $class="alignright";
+    echo $before;
+    the_post_thumbnail( "post-thumbnail", array( "class" => $class . " photo u-photo", "itemprop" => "image" ) );
+    echo $after;
+  }
+}

@@ -15,6 +15,7 @@
     }; ?>
 
   </header>
+  <?php sempress_the_post_thumbnail('<div class="entry-media">', '</div>'); ?>
     <div class="entry-content">
       <?php the_content(); ?>
     </div>
