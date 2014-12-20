@@ -56,24 +56,6 @@ function custom_conference_in_home_loop( $query ) {
 
 
 /**----------------------------------------------------------------------------
- * Support for Post Thumbnails
- * @link https://github.com/pfefferle/SemPress/
- ----------------------------------------------------------------------------*/
-
-function sempress_the_post_thumbnail($before = "", $after = "") {
-  if ( '' != get_the_post_thumbnail() ) {
-    $image = wp_get_attachment_image_src(get_post_thumbnail_id(), 'post-thumbnail');
-    $class = "";
-    if ($image['1'] < "300")
-      $class="alignright";
-    echo $before;
-    the_post_thumbnail( "post-thumbnail", array( "class" => $class . " photo u-photo", "itemprop" => "image" ) );
-    echo $after;
-  }
-}
-
-
-/**----------------------------------------------------------------------------
 Plugin Name: Author META
 Version: 1.0
 Plugin URI: http://www.ktstudios.com/wordpress-plugin-author-meta/
@@ -92,4 +74,170 @@ function kts_author_meta() {
   if ( $postauthor ) {
     echo '<meta name="author" content="'.$postauthor.'">'."\n";
   }
+}
+
+/**----------------------------------------------------------------------------
+ * Post Navigation 
+ * @link https://github.com/Themekraft/_tk/blob/master/includes/template-tags.php
+ ----------------------------------------------------------------------------*/
+if ( ! function_exists( '_tk_content_nav' ) ) :
+/**
+ * Display navigation to next/previous pages when applicable
+ */
+function _tk_content_nav( $nav_id ) {
+  global $wp_query, $post;
+  // Don't print empty markup on single pages if there's nowhere to navigate.
+  if ( is_single() ) {
+    $previous = ( is_attachment() ) ? get_post( $post->post_parent ) : get_adjacent_post( false, '', true );
+    $next = get_adjacent_post( false, '', false );
+    if ( ! $next && ! $previous )
+      return;
+  }
+  // Don't print empty markup in archives if there's only one page.
+  if ( $wp_query->max_num_pages < 2 && ( is_home() || is_archive() || is_search() ) )
+    return;
+  $nav_class = ( is_single() ) ? 'post-navigation' : 'paging-navigation';
+  ?>
+  <nav role="navigation" id="<?php echo esc_attr( $nav_id ); ?>" class="<?php echo $nav_class; ?>">
+    <h1 class="screen-reader-text"><?php _e( 'Post navigation', '_tk' ); ?></h1>
+    <ul class="pager">
+
+    <?php if ( is_single() ) : // navigation links for single posts ?>
+
+      <?php previous_post_link( '<li class="nav-previous previous">%link</li>', '<span class="meta-nav">' . _x( '&larr;', 'Previous post link', '_tk' ) . '</span> %title' ); ?>
+      <?php next_post_link( '<li class="nav-next next">%link</li>', '%title <span class="meta-nav">' . _x( '&rarr;', 'Next post link', '_tk' ) . '</span>' ); ?>
+
+    <?php elseif ( $wp_query->max_num_pages > 1 && ( is_home() || is_archive() || is_search() ) ) : // navigation links for home, archive, and search pages ?>
+
+      <?php if ( get_next_posts_link() ) : ?>
+      <li class="nav-previous previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', '_tk' ) ); ?></li>
+      <?php endif; ?>
+
+      <?php if ( get_previous_posts_link() ) : ?>
+      <li class="nav-next next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', '_tk' ) ); ?></li>
+      <?php endif; ?>
+
+    <?php endif; ?>
+
+    </ul>
+  </nav><!-- #<?php echo esc_html( $nav_id ); ?> -->
+  <?php
+}
+endif; // _tk_content_nav
+
+/*
+Plugin Name: CF Post Formats Fallback
+Plugin URI: http://crowdfavorite.com
+Description: Add post format field content to main post content.
+Version: 1.0dev
+Author: crowdfavorite
+Author URI: http://crowdfavorite.com 
+*/
+/**
+ * Copyright (c) 2011 Crowd Favorite, Ltd. All rights reserved.
+ *
+ * Released under the GPL license
+ * http://www.opensource.org/licenses/gpl-license.php
+ *
+ * This is an add-on for WordPress
+ * http://wordpress.org/
+ *
+ * **********************************************************************
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * **********************************************************************
+ */
+function cfpff_init() {
+  if (!is_admin()) {
+//  if (!current_theme_support('post-formats') && !is_admin()) {
+// TODO - also check for post format support here?
+// Was getting a suprious true response on check, not sure why. Also, need to consider
+// themes that support post formats but not these custom fields
+    add_action('the_posts', 'cfpff_the_posts');
+  }
+}
+add_action('init', 'cfpff_init');
+function cfpff_the_posts($posts) {
+  if (is_array($posts) && count($posts)) {
+    foreach ($posts as &$post) {
+// check to see if the post has a format
+// taken directly from get_post_format(), but without the check for post format support
+  
+      $_format = get_the_terms( $post->ID, 'post_format' );
+    
+      if ( empty( $_format ) )
+        continue;
+    
+      $format = array_shift( $_format );
+      $format = str_replace('post-format-', '', $format->slug);
+    
+// check for custom fields and attach to the post content
+    
+      switch ($format) {
+        case 'link':
+        case 'image':
+        case 'gallery':
+        case 'video':
+        case 'audio':
+        case 'quote':
+          $post->post_content = call_user_func('cfpff_fallback_'.$format, $post);
+      }
+    }
+  }
+  return $posts;
+}
+function cfpff_fallback_link($post) {
+  $url = get_post_meta($post->ID, '_format_link_url', true);
+  if (!empty($url) && strpos($post->post_content, $url) === false) {
+    $parts = parse_url($url);
+    $post->post_content .= "\n\n"
+    .'<p><a href="'.esc_url($url).'">'.sprintf(__('View on %s', 'cf-post-formats-fallback'), esc_html($parts['host'])).'</a></p>';
+  }
+  return $post->post_content;
+}
+// TODO - check for existing image in post before prepending
+function cfpff_fallback_image($post) {
+  $image_id = intval(get_post_meta($post->ID, '_thumbnail_id', true));
+  if ($image_id) {
+    $post->post_content = wp_get_attachment_image($image_id, 'small')."\n\n".$post->post_content;
+  }
+  return $post->post_content;
+}
+function cfpff_fallback_gallery($post) {
+  if (strpos($post->post_content, '[gallery') === false) {
+    $gallery = do_shortcode('[gallery]');
+    if (!empty($gallery)) {
+      $post->post_content = $gallery."\n\n".$post->post_content;
+    }
+  }
+  return $post->post_content;
+}
+function cfpff_fallback_video($post) {
+  $embed = get_post_meta($post->ID, '_format_video_embed', true);
+  if (!empty($embed) && strpos($post->post_content, $embed) === false) {
+    $post->post_content = $embed."\n\n".$post->post_content;
+  }
+  return $post->post_content;
+}
+function cfpff_fallback_audio($post) {
+  $embed = get_post_meta($post->ID, '_format_audio_embed', true);
+  if (!empty($embed) && strpos($post->post_content, $embed) === false) {
+    $post->post_content = $embed."\n\n".$post->post_content;
+  }
+  return $post->post_content;
+}
+function cfpff_fallback_quote($post) {
+  $name = get_post_meta($post->ID, '_format_quote_source_name', true);
+  $url = get_post_meta($post->ID, '_format_quote_source_url', true);
+  if (!empty($name) && strpos($post->post_content, esc_html($name)) === false) {
+    $post->post_content .= "\n\n".'<p>&mdash; <i>'.(!empty($url) ? '<a href="'.esc_url($url).'">'.esc_html($name).'</a>' : esc_html($name)).'</i></p>';
+  }
+  return $post->post_content;
 }
