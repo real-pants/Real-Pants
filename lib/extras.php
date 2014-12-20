@@ -99,7 +99,6 @@ function _tk_content_nav( $nav_id ) {
   $nav_class = ( is_single() ) ? 'post-navigation' : 'paging-navigation';
   ?>
   <nav role="navigation" id="<?php echo esc_attr( $nav_id ); ?>" class="<?php echo $nav_class; ?>">
-    <h1 class="screen-reader-text"><?php _e( 'Post navigation', '_tk' ); ?></h1>
     <ul class="pager">
 
     <?php if ( is_single() ) : // navigation links for single posts ?>
@@ -242,6 +241,10 @@ function cfpff_fallback_quote($post) {
   return $post->post_content;
 }
 
+/**----------------------------------------------------------------------------
+ * Customized WordPress Administration Filters
+ * @link http://www.sitepoint.com/customized-wordpress-administration-filters/
+ ----------------------------------------------------------------------------*/
 //defining the filter that will be used to select posts by 'post formats'
 function add_post_formats_filter_to_post_administration(){
  

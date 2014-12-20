@@ -28,7 +28,7 @@
 
     </div><!-- /.content -->
   </div><!-- /.wrap -->
-
+<?php _tk_content_nav( 'nav-below' ); ?>
   <?php get_template_part('templates/footer'); ?>
 
 </body>
