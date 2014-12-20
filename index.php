@@ -7,10 +7,10 @@
   <?php get_search_form(); ?>
 <?php endif; ?>
 
-<?php /* do special stufff on the first page of reesults */ if ( !is_paged() ) : ?>
+<?php /* do special stufff on the first page of results */ if ( !is_paged() ) : ?>
 
 <!-- LOOP ONE: Show the most recent post -->
-<?php query_posts('showposts=1'); while (have_posts()) : the_post(); ?>
+<?php query_posts('showposts=1&post_type[]=post&post_type[]=sponsoredpost&post_type[]=comic'); while (have_posts()) : the_post(); ?>
 
   <?php get_template_part('templates/content', get_post_format()); ?>
 <?php endwhile; ?>
@@ -25,7 +25,7 @@
  </article>
 
 <!-- LOOP TWO: Show the remaining posts -->
-<?php query_posts('offset=1'); while (have_posts()) : the_post(); ?>
+<?php query_posts('offset=1&post_type[]=post&post_type[]=sponsoredpost&post_type[]=comic'); while (have_posts()) : the_post(); ?>
   <?php get_template_part('templates/content', get_post_format()); ?>
 <?php endwhile; ?>
 
