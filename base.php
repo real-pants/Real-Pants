@@ -16,11 +16,11 @@
     <div class="content row">
 
       <?php if (roots_display_sidebar()) : ?>
-        <aside class="sidebar hidden-xs" role="complementary">
+        <aside class="sidebar hidden-xs hidden-sm" role="complementary">
           <?php include roots_sidebar_path(); ?>
         </aside><!-- /.sidebar -->
       <?php endif; ?>
-      
+
       <section id="primary" class="col-md-8" role="main">
         <?php /* Leaderboard ad */  if(function_exists('oiopub_banner_zone')) oiopub_banner_zone(1, 'center'); ?>
         <?php include roots_template_path(); ?>
