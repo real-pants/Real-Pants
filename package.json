@@ -35,5 +35,8 @@
     "grunt-wp-assets": "~0.2.6",
     "load-grunt-tasks": "~0.6.0",
     "time-grunt": "~0.4.0"
+  },
+  "dependencies": {
+    "ansi-regex": "~1.1.0"
   }
 }

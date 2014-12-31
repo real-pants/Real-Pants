@@ -16,7 +16,10 @@
 * {-ms-word-wrap: break-word;
 word-wrap: break-word;}
 
-#primary {padding: 70px 32px;}
+@media (min-width: @screen-md-min) {
+	#primary {padding: 70px 32px;}
+}
+
 #primary > article {
   padding: 20px 40px;
 }
