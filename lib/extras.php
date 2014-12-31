@@ -38,7 +38,7 @@ function jptweak_remove_share() {
         remove_filter( 'the_content', array( Jetpack_Likes::init(), 'post_likes' ), 30, 1 );
     }
 }
- 
+
 add_action( 'loop_start', 'jptweak_remove_share' );
 
 
@@ -84,11 +84,11 @@ function kts_author_meta() {
 
 //defining the filter that will be used so we can select posts by 'author'
 function add_author_filter_to_posts_administration(){
- 
+
     //execute only on the 'post' content type
     global $post_type;
     if($post_type == 'post'){
- 
+
         //get a listing of all users that are 'author' or above
         $user_args = array(
             'show_option_all'   => 'All Users',
@@ -98,40 +98,53 @@ function add_author_filter_to_posts_administration(){
             'who'               => 'authors',
             'include_selected'  => true
         );
- 
+
         //determine if we have selected a user to be filtered by already
         if(isset($_GET['aurthor_admin_filter'])){
             //set the selected value to the value of the author
             $user_args['selected'] = (int)sanitize_text_field($_GET['aurthor_admin_filter']);
         }
- 
+
         //display the users as a drop down
         wp_dropdown_users($user_args);
     }
- 
+
 }
 add_action('restrict_manage_posts','add_author_filter_to_posts_administration');
 
 //restrict the posts by an additional author filter
 function add_author_filter_to_posts_query($query){
- 
-    global $post_type, $pagenow; 
- 
+
+    global $post_type, $pagenow;
+
     //if we are currently on the edit screen of the post type listings
     if($pagenow == 'edit.php' && $post_type == 'post'){
- 
+
         if(isset($_GET['aurthor_admin_filter'])){
- 
+
             //set the query variable for 'author' to the desired value
             $author_id = sanitize_text_field($_GET['aurthor_admin_filter']);
- 
+
             //if the author is not 0 (meaning all)
             if($author_id != 0){
                 $query->query_vars['author'] = $author_id;
             }
- 
+
         }
     }
 }
- 
+
 add_action('pre_get_posts','add_author_filter_to_posts_query');
+
+
+/**----------------------------------------------------------------------------
+ * Add Custom Post Types to Author Archives Pages
+ * @link http://isabelcastillo.com/add-custom-post-types-to-author-archives-wordpress
+ ----------------------------------------------------------------------------*/
+
+function custom_post_author_archive($query) {
+    if ($query->is_author)
+        $query->set( 'post_type', array('post', 'sponsoredpost', 'comic') );
+    remove_action( 'pre_get_posts', 'custom_post_author_archive' );
+}
+add_action('pre_get_posts', 'custom_post_author_archive');
