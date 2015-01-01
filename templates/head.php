@@ -9,6 +9,8 @@
   <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
   
   <?php wp_head(); ?>
-
+  <?php if(is_home()) : ?>
+  	<meta property="article:author" content="http://facebook.com/actualpants" />
+	<?php endif; ?>
   <link rel="alternate" type="application/rss+xml" title="<?php echo get_bloginfo('name'); ?> Feed" href="<?php echo esc_url(get_feed_link()); ?>">
 </head>
