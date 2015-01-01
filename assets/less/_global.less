@@ -100,6 +100,32 @@ p {
   margin: 0 0 @line-height-computed;
 }
 
+ul, ol {
+  margin: 0 0 @line-height-computed @line-height-computed;
+}
+.sidebar ul, .sidebar ol {
+  margin: 0;
+  list-style: none;
+}
+li {
+  margin-bottom: @line-height-computed;
+}
+.sidebar ul {
+  margin-left: 0;
+  padding-left: 0;
+}
+li > ul,
+li > ol {
+  margin-bottom: 0;
+  margin-left: 1.5em;
+}
+dt {
+  font-weight: bold;
+}
+dd {
+  margin: 0 1.5em 1.5em;
+}
+
 /*
  * Listing and pages
  *
