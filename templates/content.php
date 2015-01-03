@@ -6,7 +6,7 @@
   			<?php the_title(); ?>
   		</a>
   	</h1>
-    <p>by <a href="<?php echo get_author_posts_url(get_the_author_meta('ID')); ?>"><?php echo get_the_author(); ?></a> on <?php the_date(); ?>
+    <p>by <a href="<?php echo get_author_posts_url(get_the_author_meta('ID')); ?>"><?php echo get_the_author(); ?></a> on <?php the_time( get_option( 'date_format' ) ); ?>
  </p>
   </header>
     <section class="entry-content">
