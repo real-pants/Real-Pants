@@ -148,3 +148,19 @@ function custom_post_author_archive($query) {
     remove_action( 'pre_get_posts', 'custom_post_author_archive' );
 }
 add_action('pre_get_posts', 'custom_post_author_archive');
+
+
+/**----------------------------------------------------------------------------
+ * Add Custom Post Types to Category Archives Pages
+ * @link http://css-tricks.com/snippets/wordpress/make-archives-php-include-custom-post-types/
+ ----------------------------------------------------------------------------*/
+
+function custom_post_category_archive( $query ) {
+  if( is_category() || is_tag() && empty( $query->query_vars['suppress_filters'] ) ) {
+    $query->set( 'post_type', array(
+     'post', 'sponsoredpost', 'comic'
+        ));
+      return $query;
+    }
+}
+add_filter( 'pre_get_posts', 'custom_post_category_archive' );

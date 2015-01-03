@@ -1,17 +1,14 @@
 <?php
 /**
- * The template for displaying an author's posts.
+ * The template for displaying archive pages.
  *
- * custom function `custom_post_author_archive`
- * includes post types lib/extras.php
+ * Used to display archive-type pages if nothing more specific matches a query.
+ * For example, puts together date-based pages if no date.php file exists.
+ *
+ * custom function `custom_post_category_archive`
+ * includes post types /lib/extras.php
  */
-get_template_part( 'templates/author-bio' ); ?>
-<?php if (!have_posts()) : ?>
-  <div class="alert alert-warning">
-    <?php _e('Sorry, no results were found.', 'roots'); ?>
-  </div>
-  <?php get_search_form(); ?>
-<?php endif; ?>
+ // get_template_part('templates/page', 'header'); ?>
 
 <?php while (have_posts()) : the_post(); ?>
   <?php get_template_part('templates/content', get_post_format()); ?>
