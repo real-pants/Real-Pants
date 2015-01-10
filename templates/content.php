@@ -1,3 +1,4 @@
+<!--- content template -->
 <article <?php post_class(); ?>>
   <header class="entry-header">
   	<div class="entry-meta"><?php get_template_part('templates/entry-meta'); ?>  </div>
