@@ -7,7 +7,7 @@
   <?php get_search_form(); ?>
 <?php endif; ?>
 
-<?php /* do special stufff on the first page of results */ if ( !is_paged() ) : ?>
+<?php /* do special stuff on the first page of results */ if ( !is_paged() ) : ?>
 
 <!-- LOOP ONE: Show the most recent post -->
   <?php query_posts('showposts=1&post_type[]=post&post_type[]=sponsoredpost&post_type[]=comic'); while (have_posts()) : the_post(); ?>

@@ -12,7 +12,7 @@
   </header>
     <section class="entry-content">
       <?php the_content(); ?>
-      <?php if ( comments_open() ) : echo '<p class="pull-right">'; comments_popup_link( 'No comments yet', '1 comment', '% comments', 'comments-link', 'Comments are off for this post'); echo '</p>'; endif; ?>
+      <?php comments_popup_link( 'No comments yet', '1 comment', '% comments', 'pull-right', 'Comments are off for this post');?>
     </section>
     <div class="article-separator">&sect;</div>
 </article>
