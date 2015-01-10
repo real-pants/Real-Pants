@@ -15,7 +15,7 @@
 <?php endwhile; ?>
 
 <!-- WIDGET AREA -->
-<article class="well">
+<article id="loopwidget" class="well">
   <?php if ( is_active_sidebar( 'sidebar-innerloop' ) ) : ?>
     <section id="sidebar-innerloop" class="sidebar-innerloop widget-area" role="complementary">
       <?php dynamic_sidebar( 'sidebar-innerloop' ); ?>
