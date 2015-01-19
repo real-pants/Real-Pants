@@ -2,6 +2,11 @@
 // http://codex.wordpress.org/CSS#WordPress_Generated_Classes
 // http://www.wpbeginner.com/wp-themes/default-wordpress-generated-css-cheat-sheet-for-beginners/
 
+
+
+/* =IMAGE STYLES
+----------------------------------------------- */
+
 .alignnone {
     width: 100%;
     margin: 5px 20px 20px 0;
@@ -55,22 +60,51 @@
 #infinite-footer {
     display: none !important;
 }
+
+
+/* =MEDIA STYLES
+----------------------------------------------- */
+
+[class*='embed-'] {
+    clear: both;
+    .embed-responsive();
+    .embed-responsive-16by9();
+ }
+
+[class*='-player']  {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    border: 0;
+}
+
 /* =DEFAULT BODY STYLES
 ----------------------------------------------- */
 
 .rtl {} .home {} .blog {} .archive {} .date {} .search {} .paged {} .attachment {} .error404 {} .single postid-(id) {} .attachmentid-(id) {} .attachment-(mime-type) {} .author {} .author-(user_nicename) {} .category {} .category-(slug) {} .tag {} .tag-(slug) {} .page-parent {} .page-child parent-pageid-(id) {} .page-template page-template-(template file name) {} .search-results {} .search-no-results {} .logged-in {} .paged-(page number) {} .single-paged-(page number) {} .page-paged-(page number) {} .category-paged-(page number) {} .tag-paged-(page number) {} .date-paged-(page number) {} .author-paged-(page number) {} .search-paged-(page number) {}
+
+
 /* =POST STYLES
 ----------------------------------------------- */
 
 .post-id {} .post {} .page {} .attachment {} .sticky {} .hentry {} .category-misc {} .category-example {} .tag-news {} .tag-wordpress {} .tag-markup {}
+
+
 /* =POST FORMAT STYLES
 ----------------------------------------------- */
 
 .format-image {} .format-gallery {} .format-chat {} .format-link {} .format-quote {} .format-status {} .format-video {}
-/* =MEDIA STYLES
------------------------------------------------ */
 
-.format-image {} .format-gallery {} .format-chat {} .format-link {} .format-quote {} .format-status {} .format-video {}
+
+
+
+
+
+
+
 /* =MENU STYLES
 / disabled because of alt. topanv
 ----------------------------------------------- */
