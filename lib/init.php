@@ -47,7 +47,7 @@ function roots_widgets_init() {
     'name'          => __('Primary', 'roots'),
     'id'            => 'sidebar-primary',
     'before_widget' => '<aside class="widget %1$s %2$s">',
-    'after_widget'  => '</aside><hr>',
+    'after_widget'  => '</aside>',
     'before_title'  => '<h3>',
     'after_title'   => '</h3>',
   ));

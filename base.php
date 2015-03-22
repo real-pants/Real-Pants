@@ -15,16 +15,16 @@
   <div class="wrap container" role="document">
     <div class="content row">
 
+      <section id="primary" class="col-md-8" role="main">
+        <?php /* Leaderboard ad */  if(function_exists('oiopub_banner_zone')) oiopub_banner_zone(1, 'center'); ?>
+        <?php include roots_template_path(); ?>
+      </section><!-- /.main -->
+
       <?php if (roots_display_sidebar()) : ?>
         <aside class="sidebar hidden-xs hidden-sm" role="complementary">
           <?php include roots_sidebar_path(); ?>
         </aside><!-- /.sidebar -->
       <?php endif; ?>
-
-      <section id="primary" class="col-md-8" role="main">
-        <?php /* Leaderboard ad */  if(function_exists('oiopub_banner_zone')) oiopub_banner_zone(1, 'center'); ?>
-        <?php include roots_template_path(); ?>
-      </section><!-- /.main -->
 
     </div><!-- /.content -->
   </div><!-- /.wrap -->
