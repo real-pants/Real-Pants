@@ -1,0 +1,231 @@
+/* =Global
+----------------------------------------------- */
+
+@font-face{ 
+  font-family: 'Questa Grande Regular';
+  src: url('/wp-content/themes/fancypants/assets/fonts/2-Questa_Grande_Regular-webfont.eot');
+  src: url('/wp-content/themes/fancypants/assets/fonts/2-Questa_Grande_Regular-webfont.eot?#iefix') format('embedded-opentype'),
+       url('/wp-content/themes/fancypants/assets/fonts/2-Questa_Grande_Regular-webfontt.woff') format('woff'),
+       url('/wp-content/themes/fancypants/assets/fonts/2-Questa_Grande_Regular-webfont.ttf') format('truetype'),
+       url('/wp-content/themes/fancypants/assets/fonts/2-Questa_Grande_Regular-webfont.svg#webfont') format('svg');
+}
+
+body,
+button,
+input,
+select,
+textarea {
+	font-family: 'Libre Baskerville', Baskerville, 'Book Antiqua', Georgia, Times, serif;
+	font-size: 18px;
+	line-height: 1.69em;
+	-webkit-font-smoothing: antialiased;
+	background: #f7f7f5;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+h1, h2, h3 {
+  font-weight: 300;
+}
+
+hr {
+	background-color: #ccc;
+	border: 0;
+	height: 1px;
+	margin-bottom: 1.5em;
+}
+
+
+
+
+
+//
+// Typography
+// --------------------------------------------------
+
+
+// Headings
+// -------------------------
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: @headings-font-family;
+  font-weight: @headings-font-weight;
+  line-height: @headings-line-height;
+  color: @headings-color;
+
+  small,
+  .small {
+    font-weight: normal;
+    line-height: 1;
+    color: @headings-small-color;
+  }
+}
+
+h1, .h1 { font-size: @font-size-large; margin-bottom: 1.5em;}
+@media (min-width: @screen-md-min) {
+  h1, .h1 { font-size: @font-size-h1; margin-bottom: 1.5em;}
+}
+h2, .h2 { font-size: @font-size-h2; }
+h3, .h3 { font-size: @font-size-h3; }
+h4, .h4 { font-size: @font-size-h4; }
+h5, .h5 { font-size: @font-size-h5; }
+h6, .h6 { font-size: @font-size-h6; }
+
+h1, .h1,
+h2, .h2,
+h3, .h3 {
+  margin-top: @line-height-computed;
+  margin-bottom: 0px;
+
+  small,
+  .small {
+    font-size: 65%;
+  }
+}
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  margin-top: (@line-height-computed / 2);
+  margin-bottom: 0px;
+
+  small,
+  .small {
+    font-size: 75%;
+  }
+}
+
+.entry-content {
+  h1, h2, h3, h4, h5, h6 {margin-bottom: @line-height-computed;}
+}
+
+
+
+// Body text
+// -------------------------
+
+p {
+  margin: 0 0 @line-height-computed;
+}
+
+ul, ol {
+  margin: 0 0 @line-height-computed @line-height-computed;
+}
+.sidebar ul, .sidebar ol {
+  margin: 0;
+  list-style: none;
+}
+li {
+  margin-bottom: @line-height-computed;
+}
+.sidebar ul {
+  margin-left: 0;
+  padding-left: 0;
+}
+li > ul,
+li > ol {
+  margin-bottom: 0;
+  margin-left: 1.5em;
+}
+dt {
+  font-weight: bold;
+}
+dd {
+  margin: 0 1.5em 1.5em;
+}
+
+/*
+ * Listing and pages
+ *
+ * Series of entries.
+ */
+
+.listing {
+  max-width: 900px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+.entry,
+// .page,
+.list {
+  margin-top:    1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: @screen-sm-min) {
+  .listing {
+    margin-left: 35%;
+    width: 65%;
+    padding-left: 0;
+  }
+  .entry,
+  // .page,
+  .list {
+    margin-top:    3rem;
+    margin-bottom: 3rem;
+  }
+}
+
+@media (min-width: @screen-lg-min) {
+  .listing {
+    width: 70%;
+    margin-left: 27.5%;
+    margin-right: 2.5%;
+  }
+}
+
+
+/*
+ * Pages
+ */
+
+.page {
+  // max-width: 700px;
+}
+.page-title {
+  /*font-size: 2rem;*/
+}
+.page-title + p {
+  /*font-size: 1.25rem;*/
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+
+
+// Content wrapper
+.wrap { }
+
+// Main content area
+.mainbar {
+  .make-sm-column(@main-sm-columns);
+  .sidebar-primary & {
+    .make-sm-column(@main-sm-columns - @sidebar-sm-columns);
+  }
+}
+
+
+/* =Content
+----------------------------------------------- */
+
+* {-ms-word-wrap: break-word;
+word-wrap: break-word;}
+
+#primary > article {
+  padding: 20px 0px;
+}
+
+@media (min-width: @screen-md-min) {
+  #primary {padding: 70px 32px;}
+  #primary > article {
+    padding: 20px 40px;
+  }
+}
+
+
+
+/* =Ads
+----------------------------------------------- */
+
+#oio-banner-1 {margin-bottom: @line-height-computed;}

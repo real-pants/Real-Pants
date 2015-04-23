@@ -1,5 +1,23 @@
-RealPants.com
-=============
+pants theme
+===========
+
+theme for realpants.com
+working version 1.2?
+
+built using:
+    node v0.12.2
+    npm v2.8.3
+    gulp v3.8.11
+    PHP 5.5.14
+
+
+useful command: ``sudo chown -R $(whoami) /usr/local``
+
+
+
+
+RealPants.com,  a   new literature-based    website,    to  launch  January 1,  2015
+==========
 
 Contact:  
 Adam Robinson  
