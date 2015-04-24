@@ -1,31 +1,8 @@
-pants theme
-===========
-
-theme for realpants.com
-working version 1.2?
-
-built using:
-    node v0.12.2
-    npm v2.8.3
-    gulp v3.8.11
-    PHP 5.5.14
+RealPants.com
+=============
 
 
-useful command: ``sudo chown -R $(whoami) /usr/local``
-
-
-
-
-RealPants.com,  a   new literature-based    website,    to  launch  January 1,  2015
-==========
-
-Contact:  
-Adam Robinson  
-adam@realpants.com  
-(443) 938-5091  
-twitter.com/actualpants  
-
-RealPants.com, a new literature-based website, to launch January 1, 2015 Website to feature content on a TV-like schedule We are excited to announce Real Pants, a new website devoted to literary conversation. The goal of the site is to pique the interest of people who love books, whether they are writers themselves or busy professionals who barely find time to read on the train, or whether they have a stack of used paperbacks on their nightstand or belong to an eBook club like Oyster. Real Pants asserts that literature is about more than books—it encompasses human interaction in general—and our audience is accordingly broad.
+We are excited to announce Real Pants, a new website devoted to literary conversation. The goal of the site is to pique the interest of people who love books, whether they are writers themselves or busy professionals who barely find time to read on the train, or whether they have a stack of used paperbacks on their nightstand or belong to an eBook club like Oyster. Real Pants asserts that literature is about more than books—it encompasses human interaction in general—and our audience is accordingly broad.
 
 Real Pants offers a fresh take on literature and publishing, with writing that goes beyond the kinds of book reviews and author interviews that so many places already do well. We hope to spark and sustain discussion and energize a diverse literary community.
 
