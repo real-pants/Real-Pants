@@ -1,6 +1,6 @@
+
 RealPants.com
 =============
-
 
 We are excited to announce Real Pants, a new website devoted to literary conversation. The goal of the site is to pique the interest of people who love books, whether they are writers themselves or busy professionals who barely find time to read on the train, or whether they have a stack of used paperbacks on their nightstand or belong to an eBook club like Oyster. Real Pants asserts that literature is about more than books—it encompasses human interaction in general—and our audience is accordingly broad.
 
