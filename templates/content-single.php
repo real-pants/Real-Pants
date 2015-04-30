@@ -2,11 +2,12 @@
   <article <?php post_class(); ?>>
     <header class="entry-header">
     <h1 class="entry-title">
+    <div class="entry-meta"><?php get_template_part('templates/entry-meta'); ?>  </div>
       <a href="<?php the_permalink(); ?>">
         <?php the_title(); ?>
       </a>
     </h1>
-    <p class="byline author vcard">by <a href="<?php echo get_author_posts_url(get_the_author_meta('ID')); ?>" rel="author" class="fn"><?php echo get_the_author(); ?></a> on <?php the_time( get_option( 'date_format' ) ); ?></p>
+    <p>by <a href="<?php echo get_author_posts_url(get_the_author_meta('ID')); ?>" rel="author" class="fn"><?php echo get_the_author(); ?></a> on <?php the_time( get_option( 'date_format' ) ); ?></p>
 
     <?php
     // display jetpack's sharing widget http://jetpack.me/2013/06/10/moving-sharing-icons/
