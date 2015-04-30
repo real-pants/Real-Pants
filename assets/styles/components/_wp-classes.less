@@ -155,10 +155,10 @@ blockquote.right {}
 .gallery dl img {}
 .gallery-caption {}
 
-.size-full {}
-.size-large {}
-.size-medium {}
-.size-thumbnail {}
+.size-full {max-width: 100%;}
+.size-large {max-width: 75%;}
+.size-medium {max-width: 50%;}
+.size-thumbnail {max-width: 25%;}
 
 
 /* =WIDGET STYLES
@@ -343,3 +343,8 @@ blockquote.right {}
 .gallery-row {
   padding: (@line-height-computed / 2) 0;
 }
+
+// video
+// http://getbootstrap.com/components/#responsive-embed
+.embed-youtube {.embed-responsive(); .embed-responsive-16by9();}
+// .youtube-player {.embed-responsive-item();}
