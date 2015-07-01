@@ -59,7 +59,7 @@ add_action( 'loop_start', 'jptweak_remove_share' );
 
 function custom_conference_in_home_loop( $query ) {
  if ( is_home() && $query->is_main_query() )
- $query->set( 'post_type', array( 'post', 'sponsoredpost', 'comic') );
+ $query->set( 'post_type', array( 'any') );
  return $query;
  }
  add_filter( 'pre_get_posts', 'custom_conference_in_home_loop' );
