@@ -57,12 +57,12 @@ add_action( 'loop_start', 'jptweak_remove_share' );
  * @link http://premium.wpmudev.org/blog/how-to-add-custom-post-types-to-your-home-page-and-feeds/
  ----------------------------------------------------------------------------*/
 
-function custom_conference_in_home_loop( $query ) {
+function custom_posttype_in_home_loop( $query ) {
  if ( is_home() && $query->is_main_query() )
- $query->set( 'post_type', array( 'any') );
+$query->set( 'post_type', array( 'post', 'sponsoredpost', 'comic', 'podcast', 'any') );
  return $query;
  }
- add_filter( 'pre_get_posts', 'custom_conference_in_home_loop' );
+ add_filter( 'pre_get_posts', 'custom_posttype_in_home_loop' );
 
 
 /**----------------------------------------------------------------------------
